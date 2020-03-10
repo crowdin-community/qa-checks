@@ -1,0 +1,52 @@
+var minimalPercent = 0.25;
+
+var result = {
+  success: false
+};
+
+if (crowdin.contentType === 'application/vnd.crowdin.text+plural') {
+  var obj = JSON.parse(crowdin.source);
+
+  if (obj[crowdin.context.pluralForm] != null) {
+    source = obj[crowdin.context.pluralForm]
+  } else {
+    source = obj.other
+  }
+} else {
+  source = crowdin.source
+}
+
+var translation = crowdin.translation,
+  wordsPattern = /[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]+/g,
+  lengthOfSourceWords = 0,
+  lengthOfTranslationWords = 0;
+
+massOfWordsSource = source.match(wordsPattern);
+massOfWordsTranslation = translation.match(wordsPattern);
+
+if (Array.isArray(massOfWordsSource) && massOfWordsSource.length) {
+  for (var i = 0; i < massOfWordsSource.length; i++) {
+    lengthOfSourceWords += massOfWordsSource[i].length
+  }
+} else {
+  result.success = true;
+  return result
+}
+
+if (Array.isArray(massOfWordsTranslation) && massOfWordsTranslation.length) {
+  for (var i = 0; i < massOfWordsTranslation.length; i++) {
+    lengthOfTranslationWords += massOfWordsTranslation[i].length
+  }
+} else {
+  result.message = 'Words in translation not found.';
+  result.fixes = [];
+}
+
+if ((lengthOfTranslationWords / lengthOfSourceWords) < minimalPercent) {
+  result.message = 'Translation too short. Current percent "' + (lengthOfTranslationWords / lengthOfSourceWords.toFixed(2)) * 100 + '%", when minimal is "' + minimalPercent * 100 + '%".';
+  result.fixes = [];
+} else {
+  result.success = true;
+}
+
+return result;
