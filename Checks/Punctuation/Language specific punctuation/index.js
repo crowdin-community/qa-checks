@@ -1,9 +1,19 @@
+/**
+ * Config section
+ * Define the punctuation translation rules below
+ * Language codes - https://support.crowdin.com/api/language-codes/
+ */
+
 var config = {
   "es": {
     "¿": "?",
     "¡": "!"
   }
 };
+
+/**
+ * Code section
+ */
 
 var result = {
   success: false

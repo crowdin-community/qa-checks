@@ -1,3 +1,9 @@
+/**
+ * Config section
+ * Define the URL translation rules below
+ * Language codes - https://support.crowdin.com/api/language-codes/
+ */
+
 var yourMainDomainUrl = 'crowdin.com';
 var yourTargetDomainUrl;
 
@@ -23,7 +29,9 @@ switch (crowdin.targetLanguage) {
     break
 }
 
-// Code section
+/**
+ * Code section
+ */
 
 var result = {
   success: false

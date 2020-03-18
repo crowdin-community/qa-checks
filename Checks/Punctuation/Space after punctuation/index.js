@@ -1,4 +1,13 @@
+/**
+ * Config section
+ * Define the punctuation symbols below
+ */
+
 var arrayOfPunctuation = [',','.',':',';','!','?'];
+
+/**
+ * Code section
+ */
 
 var spaceAfterPunctuationPattern = new RegExp('(?<!\\d)(['+arrayOfPunctuation.join('')+'])(?!['+arrayOfPunctuation.join('')+']|['+arrayOfPunctuation.join('')+'\\s\\d])', 'gmu');
 

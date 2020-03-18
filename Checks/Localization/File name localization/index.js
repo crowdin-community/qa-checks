@@ -1,3 +1,9 @@
+/**
+ * Config section
+ * Define the files translation rules below
+ * Language codes - https://support.crowdin.com/api/language-codes/
+ */
+
 var yourMainFileNames = ['example1.txt', 'example2.txt'];
 var yourTargetFileNames = [];
 
@@ -23,6 +29,10 @@ switch (crowdin.targetLanguage) {
       yourTargetFileNames.push(SetCharAt(yourMainFileNames[i], yourMainFileNames[i].lastIndexOf('.'), '_' + crowdin.targetLanguage + '.'))
     }
 }
+
+/**
+ * Code section
+ */
 
 var result = {
   success: false

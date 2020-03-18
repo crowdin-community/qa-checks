@@ -1,4 +1,13 @@
+/**
+ * Config section
+ * Define the math symbols list below
+ */
+
 var characters = ['+', '-', '±', '=', '≠', '≈', '≅', '≡', '*', '×', '÷', '/', '<', '>', '≤', '≥', '∑', '∏', '∫', '∩', '∀', '∃', '∅', '∂', '∇', '⊂', '⊃', '∪', '∈', '∉', '∋', '∠', '∴', '⊕', '⊗', '⊥', '√', '∝', '∞'];
+
+/**
+ * Code section
+ */
 
 var result = {
   success: false
