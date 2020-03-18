@@ -1,4 +1,13 @@
+/**
+ * Config section
+ * Define the punctuation symbols below
+ */
+
 var arrayOfPunctuation = [',','.',':',';','!','?'];
+
+/**
+ * Code section
+ */
 
 var duplicatedPunctuationsPattern = new RegExp('(?<!\\.)(?!\\.{3}(?!\\.))(['+arrayOfPunctuation.join('')+'])\\1+', 'gmu');
 

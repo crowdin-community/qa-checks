@@ -1,4 +1,9 @@
-var ignoreMassive = ['ignore1example@crowdin.com', 'ignore2example@crowdin.com'];
+/**
+ * Config section
+ * Define the email translation rules below
+ * Language codes - https://support.crowdin.com/api/language-codes/
+ */
+
 var yourSourceEmails = ['example1@crowdin.com', 'example2@crowdin.com'];
 var yourTargetEmails = [];
 
@@ -25,14 +30,22 @@ switch (crowdin.targetLanguage) {
     }
 }
 
-// Code section
+/**
+ * Code section
+ */
 
 var result = {
   success: false
 };
 
+/**
+ * @return {string}
+ */
 function SetTargetAt (str, index, chr) {
-  if (index > str.length - 1) return str
+  if (index > str.length - 1) {
+    return str;
+  }
+
   return str.substr(0, index) + chr
 }
 
@@ -54,38 +67,38 @@ var patternForEmails = new RegExp('(?<=\\s|^)(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^
 var sourceMatch = source.match(patternForEmails);
 var translationMatch = translation.match(patternForEmails);
 var emailsForLocalization = [];
-var emailsLocalizted = [];
+var emailsLocalized = [];
 
 if (sourceMatch != null) {
   for (var i = 0; i < sourceMatch.length; i++) {
-    (ignoreMassive.indexOf(sourceMatch[i]) === -1 && yourSourceEmails.indexOf(sourceMatch[i]) !== -1) ? emailsForLocalization.push(sourceMatch[i]) : null
+    (yourSourceEmails.indexOf(sourceMatch[i]) !== -1) ? emailsForLocalization.push(sourceMatch[i]) : null
   }
 }
 if (translationMatch != null) {
   for (var i = 0; i < translationMatch.length; i++) {
-    (ignoreMassive.indexOf(translationMatch[i]) === -1 && yourTargetEmails.indexOf(translationMatch[i]) !== -1) ? emailsLocalizted.push(translationMatch[i]) : null
+    (yourTargetEmails.indexOf(translationMatch[i]) !== -1) ? emailsLocalized.push(translationMatch[i]) : null
   }
 }
 
-if (emailsLocalizted == null || emailsForLocalization == null) {
-  if (emailsLocalizted == null && emailsForLocalization == null) {
+if (emailsLocalized == null || emailsForLocalization == null) {
+  if (emailsLocalized == null && emailsForLocalization == null) {
     result.success = true
-  } else if (emailsLocalizted == null && emailsForLocalization != null) {
+  } else if (emailsLocalized == null && emailsForLocalization != null) {
     result.message = 'There are ' + emailsForLocalization.length + ' missed localized email(s) in translation.';
     result.fixes = []
-  } else if (emailsLocalizted != null && emailsForLocalization == null) {
-    result.message = 'There are ' + emailsLocalizted.length + ' extra localized email(s) in translation.';
+  } else if (emailsLocalized != null && emailsForLocalization == null) {
+    result.message = 'There are ' + emailsLocalized.length + ' extra localized email(s) in translation.';
     result.fixes = []
   }
-} else if (emailsLocalizted.length !== emailsForLocalization.length) {
-  if (emailsLocalizted.length <= emailsForLocalization.length) {
-    result.message = 'There are ' + (emailsForLocalization.length - emailsLocalizted.length) + ' missed localized email(s) in translation.';
+} else if (emailsLocalized.length !== emailsForLocalization.length) {
+  if (emailsLocalized.length <= emailsForLocalization.length) {
+    result.message = 'There are ' + (emailsForLocalization.length - emailsLocalized.length) + ' missed localized email(s) in translation.';
     result.fixes = []
-  } else if (emailsLocalizted.length >= emailsForLocalization.length) {
-    result.message = 'There are ' + (emailsLocalizted.length - emailsForLocalization.length) + ' extra localized email(s) in translation.';
+  } else if (emailsLocalized.length >= emailsForLocalization.length) {
+    result.message = 'There are ' + (emailsLocalized.length - emailsForLocalization.length) + ' extra localized email(s) in translation.';
     result.fixes = []
   }
-} else if (emailsLocalizted.length === emailsForLocalization.length) {
+} else if (emailsLocalized.length === emailsForLocalization.length) {
   result.success = true
 }
 

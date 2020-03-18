@@ -1,4 +1,13 @@
+/**
+ * Config section
+ * Define the forbidden characters list below below
+ */
+
 var characters = ['!', '@', '#', '$', '%', '&'];
+
+/**
+ * Code section
+ */
 
 var result = {
   success: false
