@@ -69,7 +69,7 @@ To learn more details about creating your own custom QA checks, please read [Cod
 
 ## Contributing
 
-If you want to contrubite please read the [Contributing](/CONTRIBUTING.md) guidelines.
+If you want to contribute please read the [Contributing](/CONTRIBUTING.md) guidelines.
 
 ## License
 
