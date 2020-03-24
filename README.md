@@ -67,6 +67,10 @@ To learn more details about creating your own custom QA checks, please read [Cod
 6. Words
     + [Duplicate words](/Checks/Words/Duplicate%20words)
 
+## Contributing
+
+If you want to contrubite please read the [Contributing](/CONTRIBUTING.md) guidelines.
+
 ## License
 
 <pre>
