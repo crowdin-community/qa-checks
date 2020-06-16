@@ -30,7 +30,7 @@ translation_text = crowdin.translation;
 sourceDiff = source.difference(translation);
 translationDiff = translation.difference(source);
 
-if (sourceDiff.length === 0 && translationDiff === 0) {
+if (sourceDiff.length === 0 && translationDiff.length === 0) {
   result.success = true
 } else {
   if (sourceDiff.length === 0) {
