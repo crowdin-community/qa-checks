@@ -5,7 +5,9 @@ Array.prototype.difference = function (array) {
   var difference = this.copy();
 
   for (var i = 0; i < array.length; i++) {
-    if (difference.includes(array[i])) { difference.splice(difference.indexOf(array[i], 1)) }
+    if (difference.includes(array[i])) {
+      difference.splice(difference.indexOf(array[i], 1))
+    }
   }
   return difference
 };
@@ -27,7 +29,7 @@ translation_text = crowdin.translation;
 sourceDiff = source.difference(translation);
 translationDiff = translation.difference(source);
 
-if (sourceDiff.length === 0 && translationDiff === 0) {
+if (sourceDiff.length === 0 && translationDiff.length === 0) {
   result.success = true
 } else {
   if (sourceDiff.length === 0) {
